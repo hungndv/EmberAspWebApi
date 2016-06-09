@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  model: null,
   title: 'Delete Student',
   submitButtonText: 'Delete',
   isDelete: true,

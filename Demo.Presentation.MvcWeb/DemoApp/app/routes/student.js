@@ -17,6 +17,7 @@ export default Ember.Route.extend({
 	},
   actions: {
     openNewModal(name) {
+      this.controllerFor('add-student').set('errors', []);
       this.render(name, {
         into: 'student',
         outlet: 'modal',
@@ -26,6 +27,7 @@ export default Ember.Route.extend({
     },
     openEditModal(name, model) {
       var copy = {id: model.get('id'), firstName: model.get('firstName'), lastName: model.get('lastName')};
+      this.controllerFor('edit-student').set('errors', []);
       this.render(name, {
         into: 'student',
         outlet: 'modal',
@@ -34,6 +36,7 @@ export default Ember.Route.extend({
       });
     },
     openDeleteModal(name, model) {
+      this.controllerFor('delete-student').set('errors', []);
       this.render(name, {
         into: 'student',
         outlet: 'modal',

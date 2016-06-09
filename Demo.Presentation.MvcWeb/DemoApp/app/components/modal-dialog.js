@@ -7,9 +7,9 @@ export default Ember.Component.extend({
       this.sendAction('ok');
     }
   },
-  show: function() {
+  didInsertElement() {
     this.$('.modal').modal().on('hidden.bs.modal', function() {
       this.sendAction('close');
     }.bind(this));
-  }.on('didInsertElement')
+  }
 });

@@ -3,7 +3,17 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   title: 'Edit Student',
   submitButtonText: 'Edit',
-  model: null,
+  
+  init() {
+    this._super(...arguments);
+    this.errors = [];
+  },
+
+  didUpdateAttrs() {
+    this._super(...arguments);
+    this.set('errors', []);
+  },
+  
   actions: {
     save() {
       // save to server peekRecord
@@ -18,6 +28,11 @@ export default Ember.Controller.extend({
         .catch(response => {
             origin.rollbackAttributes();
         });
+    },
+    required(data, event) {
+      if (!event.target.value) {
+        this.get('errors').pushObject({ message: `${event.target.name} is required`});
+      }
     }
   }
 });

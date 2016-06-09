@@ -9,6 +9,11 @@
             <td class="">Actions</td>
         </tr>
     </thead>
+    {{#unless model.length}}
+        <tr>
+            <td class="" colspan="20">No data found.</td>
+        </tr>
+    {{/unless}}
     {{#each model as |student|}}
         <tr>
             <td class="">{{student.firstName}}</td>

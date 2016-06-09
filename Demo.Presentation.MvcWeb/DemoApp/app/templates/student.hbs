@@ -1,0 +1,24 @@
+<button class="btn btn-primary" type="button" {{action 'openNewModal' 'edit-student' on='click'}}>Add</button>
+<br />
+<br />
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <td class="">FirstName</td>
+            <td class="">LastName</td>
+            <td class="">Actions</td>
+        </tr>
+    </thead>
+    {{#each model as |student|}}
+        <tr>
+            <td class="">{{student.firstName}}</td>
+            <td class="">{{student.lastName}}</td>
+            <td class="">
+                <button class="btn btn-default" type="button" {{action 'openEditModal' 'edit-student' student on='click'}}>Edit</button>
+                <button class="btn btn-danger" type="button" {{action 'openDeleteModal' 'edit-student' student on='click'}}>Delete</button>
+            </td>
+        </tr>
+    {{/each}}
+</table>
+
+{{outlet 'modal'}}

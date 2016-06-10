@@ -23,16 +23,11 @@ export default Ember.Controller.extend({
       origin.set('lastName', model.lastName);
       origin.save()
         .then(response => {
-            
+            $('.modal').modal('hide');
         })
         .catch(response => {
             origin.rollbackAttributes();
         });
-    },
-    required(data, event) {
-      if (!event.target.value) {
-        this.get('errors').pushObject({ message: `${event.target.name} is required`});
-      }
     }
   }
 });

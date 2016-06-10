@@ -12,7 +12,9 @@ export default Ember.Controller.extend({
         student.deleteRecord();
         //student.get('isDeleted'); // => true
         student.save()
-            .then(response => {}).catch(response => {
+            .then(response => {
+                $('.modal').modal('hide');
+            }).catch(response => {
                 //debugger;
                 student.rollbackAttributes();
             });

@@ -10,7 +10,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn {{if isDelete "btn-danger" "btn-primary"}}" {{action 'ok'}}>{{submitButtonText}}</button>
+          <button type="button" class="btn {{if isDelete "btn-danger" "btn-primary"}}" {{action 'ok'}} disabled={{isButtonDisabled}}>{{submitButtonText}}</button>
         </div>
       </div>
     </div>

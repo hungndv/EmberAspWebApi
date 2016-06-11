@@ -1,4 +1,5 @@
-<button class="btn btn-primary" type="button" {{action 'openNewModal' 'edit-student' on='click'}}>Add</button>
+<!--<button class="btn btn-primary" type="button" {{action 'openNewModal' 'add-student' on='click'}}>Add</button>-->
+{{#link-to "student.add" class="btn btn-primary"}}Add{{/link-to}}
 <br />
 <br />
 <table class="table table-bordered table-hover table-striped">
@@ -19,11 +20,11 @@
             <td class="">{{student.firstName}}</td>
             <td class="">{{student.lastName}}</td>
             <td class="">
-                <button class="btn btn-default" type="button" {{action 'openEditModal' 'edit-student' student on='click'}}>Edit</button>
-                <button class="btn btn-danger" type="button" {{action 'openDeleteModal' 'edit-student' student on='click'}}>Delete</button>
+                {{#link-to "student.edit" student class="btn btn-default"}}Edit{{/link-to}}
+                {{#link-to "student.delete" student class="btn btn-danger"}}Delete{{/link-to}}
             </td>
         </tr>
     {{/each}}
 </table>
 
-{{outlet 'modal'}}
+{{outlet}}

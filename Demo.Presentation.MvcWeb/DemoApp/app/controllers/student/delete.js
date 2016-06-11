@@ -6,12 +6,17 @@ export default Ember.Controller.extend({
     isDelete: true,
     actions: {
         save(modal) {
+            $.blockUI();
             this.model.deleteRecord();
             this.model.save()
                 .then(response => {
                     modal.modal('hide');
+                    toastr.success('success');
+                    $.unblockUI();
                 }).catch(response => {
                     student.rollbackAttributes();
+                    toastr.error('error');
+                    $.unblockUI();
                 });
         }
     }

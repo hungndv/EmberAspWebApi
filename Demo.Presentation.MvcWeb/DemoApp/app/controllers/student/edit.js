@@ -16,13 +16,18 @@ export default Ember.Controller.extend({
   
     actions: {
         save(modal) {
+            $.blockUI();
             this.model.save()
               .then(response => {
+                  toastr.success('success');
                   modal.modal('hide');
                   this.transitionToRoute('student');
+                  $.unblockUI();
               })
               .catch(response => {
                   this.model.rollbackAttributes();
+                  toastr.error('error');
+                  $.unblockUI();
               });
         },
         cancel(modal){

@@ -16,12 +16,15 @@ export default Ember.Controller.extend({
   
     actions: {
         save(modal) {
+            $.blockUI();
             var student = this.store.createRecord('student', {firstName: this.model.firstName, lastName: this.model.lastName});
             student.save()
                 .then(response => {
                     Ember.set(student, 'id', response.get('id'));
+                    toastr.success('success');
                     modal.modal('hide');
                     this.transitionToRoute('student');
+                    $.unblockUI();
                 })
                 .catch(error => {
                     this.set('errors', []);
@@ -29,6 +32,8 @@ export default Ember.Controller.extend({
                         this.get('errors').pushObject({ message: errorMsg});
                     });
                     student.rollbackAttributes();
+                    toastr.error('error');
+                    $.unblockUI();
                 });
         }
     }

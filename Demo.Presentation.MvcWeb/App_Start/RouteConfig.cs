@@ -18,6 +18,12 @@ namespace Demo.Presentation.MvcWeb
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "App",
+                url: "student",
+                defaults: new { controller = "Home" }
+            );
         }
     }
 }

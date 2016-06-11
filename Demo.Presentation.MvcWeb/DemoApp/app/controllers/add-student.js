@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
         this.get('errors').pushObject({ message: `FirstName is required.`});
     }
     if (!this.get('model.lastName')) {
-        this.get('errors').pushObject({ message: `LastName is required.`});
+        this.get('errors').pushObject({ message: `LastName is required.` });
     }
   }),
   

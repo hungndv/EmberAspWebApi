@@ -9,6 +9,7 @@ using System.Web.Http.Results;
 using Demo.Bll.Entities;
 using Demo.Bll.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Practices.Unity;
 
 namespace Demo.Bll.WebApi.Controllers
 {
@@ -18,9 +19,9 @@ namespace Demo.Bll.WebApi.Controllers
     {
         private readonly IStudentService _studentService;
 
-        public StudentsController()
+        public StudentsController(IStudentService studentService)
         {
-            _studentService = new StudentService();
+            _studentService = studentService;
         }
 
         // GET api/values

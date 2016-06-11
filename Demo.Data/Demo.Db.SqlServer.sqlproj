@@ -62,6 +62,6 @@
     <Build Include="Student.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Demo.Data.publish.xml" />
+    <None Include="Demo.Db.SqlServer.publish.xml" />
   </ItemGroup>
 </Project>

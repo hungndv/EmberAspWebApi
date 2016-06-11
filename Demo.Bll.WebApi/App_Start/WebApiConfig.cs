@@ -7,13 +7,27 @@ using System.Web.Http;
 using JSONAPI.Json;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using Microsoft.Practices.Unity;
+using Demo.Bll.Interfaces;
+using Demo.Dal;
+using Demo.Dal.Implements;
 
 namespace Demo.Bll.WebApi
 {
     public static class WebApiConfig
     {
+        private static void InitIoc(HttpConfiguration config)
+        {
+            var container = new UnityContainer();
+            container.RegisterType<IStudentRepository, StudentRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IStudentService, StudentService>(new HierarchicalLifetimeManager());
+            config.DependencyResolver = new UnityResolver(container);
+        }
+
         public static void Register(HttpConfiguration config)
         {
+            InitIoc(config);
+
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();

@@ -16,11 +16,16 @@ namespace Demo.Bll
         {
             AutoMapper.Mapper.CreateMap<Dal.Entities.Student, Student>();
             AutoMapper.Mapper.CreateMap<Student, Dal.Entities.Student>();
+            //AutoMapper.Mapper.Initialize(cfg =>
+            //{
+            //    cfg.CreateMap<Dal.Entities.Student, Student>();
+            //    cfg.CreateMap<Student, Dal.Entities.Student>();
+            //});
         }
 
-        public StudentService()
+        public StudentService(IStudentRepository studentRepository)
         {
-            _studentRepository = new StudentRepository();
+            _studentRepository = studentRepository;
         }
 
         public IEnumerable<Student> GetStudents()

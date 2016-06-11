@@ -15,11 +15,16 @@ namespace Demo.Dal.Implements
         {
             AutoMapper.Mapper.CreateMap<EntityFramework.Student, Student>();
             AutoMapper.Mapper.CreateMap<Student, EntityFramework.Student>();
+            //AutoMapper.Mapper.Initialize(cfg =>
+            // {
+            //     cfg.CreateMap<EntityFramework.Student, Student>();
+            //     cfg.CreateMap<Student, EntityFramework.Student>();
+            // });
         }
 
-        public StudentRepository()
+        public StudentRepository(DemoEntities context)
         {
-            this._context = new DemoEntities();
+            this._context = context;
         }
 
         public IEnumerable<Student> GetStudents()

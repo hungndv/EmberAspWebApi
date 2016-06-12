@@ -16,13 +16,7 @@ namespace Demo.Presentation.MvcWeb
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "App",
-                url: "student",
-                defaults: new { controller = "Home" }
+                defaults: new { controller = "App1", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

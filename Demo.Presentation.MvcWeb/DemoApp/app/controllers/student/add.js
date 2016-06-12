@@ -17,24 +17,31 @@ export default Ember.Controller.extend({
     actions: {
         save(modal) {
             $.blockUI();
-            var student = this.store.createRecord('student', {firstName: this.model.firstName, lastName: this.model.lastName});
-            student.save()
-                .then(response => {
-                    Ember.set(student, 'id', response.get('id'));
-                    toastr.success('success');
-                    modal.modal('hide');
-                    this.transitionToRoute('student');
-                    $.unblockUI();
-                })
-                .catch(error => {
-                    this.set('errors', []);
-                    error.errors.forEach(errorMsg => {
-                        this.get('errors').pushObject({ message: errorMsg});
+            Ember.run.later(() => {
+                var student = this.store.createRecord('student', {firstName: this.model.firstName, lastName: this.model.lastName});
+                student.save()
+                    .then(response => {
+                        Ember.set(student, 'id', response.get('id'));
+                        toastr.success('success');
+                        modal.modal('hide');
+                        this.transitionToRoute('student');
+                        $.unblockUI();
+                    })
+                    .catch(error => {
+                        this.set('errors', []);
+                        error.errors.forEach(errorMsg => {
+                            this.get('errors').pushObject({ message: errorMsg});
+                        });
+                        student.rollbackAttributes();
+                        toastr.error('error');
+                        $.unblockUI();
                     });
-                    student.rollbackAttributes();
-                    toastr.error('error');
-                    $.unblockUI();
-                });
+            }, 2000);
+
+        },
+        cancel(modal){
+            //this.model.rollbackAttributes();
+            modal.modal('hide');
         }
     }
 });

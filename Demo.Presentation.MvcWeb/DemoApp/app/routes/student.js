@@ -12,7 +12,18 @@ var students = [{
 
 export default Ember.Route.extend({
     model() {
-        return this.store.findAll('student');
+        $.blockUI();
+        return this.store.findAll('student')
+            .then(success => {
+                $.unblockUI();
+                return success;
+            })
+            .catch(error => {
+                if (error.isAdapterError) {
+                    toastr.error(error.message);
+                }
+                $.unblockUI();
+            });
         //return students;
     },
     actions: {

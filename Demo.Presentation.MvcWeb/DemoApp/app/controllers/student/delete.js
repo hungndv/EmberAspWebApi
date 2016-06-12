@@ -18,6 +18,10 @@ export default Ember.Controller.extend({
                     toastr.error('error');
                     $.unblockUI();
                 });
+        },
+        cancel(modal){
+            this.model.rollbackAttributes();
+            modal.modal('hide');
         }
     }
 });

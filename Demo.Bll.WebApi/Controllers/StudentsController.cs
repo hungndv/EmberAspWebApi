@@ -14,7 +14,7 @@ using Microsoft.Practices.Unity;
 namespace Demo.Bll.WebApi.Controllers
 {
     //[Authorize]
-    [EnableCors(origins: "*", headers: "*", methods: "*", exposedHeaders: "X-Custom-Header")]
+    [DemoCorsPolicy]
     public class StudentsController : ApiController
     {
         private readonly IStudentService _studentService;

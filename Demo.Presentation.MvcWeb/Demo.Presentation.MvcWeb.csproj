@@ -313,6 +313,21 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="DemoApp\dist\assets\demo-app.css" />
+    <Content Include="DemoApp\dist\assets\demo-app.js" />
+    <Content Include="DemoApp\dist\assets\failed.png" />
+    <Content Include="DemoApp\dist\assets\passed.png" />
+    <Content Include="DemoApp\dist\assets\test-loader.js" />
+    <Content Include="DemoApp\dist\assets\test-support.css" />
+    <Content Include="DemoApp\dist\assets\test-support.js" />
+    <Content Include="DemoApp\dist\assets\tests.js" />
+    <Content Include="DemoApp\dist\assets\vendor.css" />
+    <Content Include="DemoApp\dist\assets\vendor.js" />
+    <Content Include="DemoApp\dist\crossdomain.xml" />
+    <Content Include="DemoApp\dist\index.html" />
+    <Content Include="DemoApp\dist\robots.txt" />
+    <Content Include="DemoApp\dist\testem.js" />
+    <Content Include="DemoApp\dist\tests\index.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -351,6 +366,12 @@
     <Content Include="App_Readme\Handlebarsjs_README.md" />
     <Content Include="App_Readme\Handlebarsjs_LICENSE" />
     <Content Include="Scripts\ember-data.js.map" />
+    <Content Include="DemoApp\dist\assets\demo-app.map" />
+    <Content Include="DemoApp\dist\assets\test-support.map" />
+    <Content Include="DemoApp\dist\assets\tests.map" />
+    <Content Include="DemoApp\dist\assets\vendor.map" />
+    <None Include="BuildScripts\PreBuild.bat" />
+    <None Include="Properties\PublishProfiles\AspnetMvcEmberBuild.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\ember-template-compiler.js" />
     <Content Include="Scripts\ember.debug.js" />
@@ -481,6 +502,9 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>cmd /c $(ProjectDir)\BuildScripts\PreBuild.bat</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.                                                                                      
        Other similar extension points exist, see Microsoft.Common.targets.                                                                                                                
   <Target Name="BeforeBuild">                                                                                                                                                             

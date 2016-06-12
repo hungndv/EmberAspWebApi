@@ -29,7 +29,7 @@ namespace Demo.Dal.Implements
 
         public IEnumerable<Student> GetStudents()
         {
-            return _context.Students.ToList().Select(AutoMapper.Mapper.Map<Student>).ToList();
+            return _context.Students.Select(AutoMapper.Mapper.Map<Student>).ToList();
         }
 
         public Student GetStudentById(int id)

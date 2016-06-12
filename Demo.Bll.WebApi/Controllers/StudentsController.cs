@@ -37,6 +37,21 @@ namespace Demo.Bll.WebApi.Controllers
             return Ok(student);
         }
 
+        // GET api/values/5
+        [HttpGet]
+        public IHttpActionResult FindByFirstName(string firstName)
+        {
+            IEnumerable<Student> students = _studentService.FindByFirstName(firstName);
+            return Ok(students);
+        }
+
+        [HttpGet]
+        public IHttpActionResult FindByLastName(string lastName)
+        {
+            IEnumerable<Student> students = _studentService.FindByLastName(lastName);
+            return Ok(students);
+        }
+
         // POST api/values
         public IHttpActionResult Post([FromBody]Student student)
         {

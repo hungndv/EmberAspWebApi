@@ -11,8 +11,10 @@ namespace Demo.Bll.Interfaces
     {
         IEnumerable<Student> GetStudents();
         Student GetById(int studentId);
+        IEnumerable<Student> FindByFirstName(string firstName);
         int Insert(Student student);
         void Delete(int studentId);
         void Update(Student student);
+        IEnumerable<Student> FindByLastName(string lastName);
     }
 }

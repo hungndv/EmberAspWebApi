@@ -30,7 +30,7 @@ namespace Demo.Bll
 
         public IEnumerable<Student> GetStudents()
         {
-            return _studentRepository.GetStudents().ToList().Select(AutoMapper.Mapper.Map<Student>).ToList();
+            return _studentRepository.GetStudents().Select(AutoMapper.Mapper.Map<Student>);
         }
 
         public Student GetById(int studentId)
@@ -53,6 +53,20 @@ namespace Demo.Bll
         {
             Dal.Entities.Student dalStudent = AutoMapper.Mapper.Map<Dal.Entities.Student>(student);
             _studentRepository.UpdateStudent(dalStudent);
+        }
+
+        public IEnumerable<Student> FindByFirstName(string firstName)
+        {
+            return _studentRepository.GetStudents()
+                .Where(s => s.FirstName.Trim().ToUpper().Contains(firstName.Trim().ToUpper()))
+                .Select(AutoMapper.Mapper.Map<Student>);
+        }
+
+        public IEnumerable<Student> FindByLastName(string lastName)
+        {
+            return _studentRepository.GetStudents()
+                .Where(s => s.LastName.Trim().ToUpper().Contains(lastName.Trim().ToUpper()))
+                .Select(AutoMapper.Mapper.Map<Student>);
         }
     }
 }

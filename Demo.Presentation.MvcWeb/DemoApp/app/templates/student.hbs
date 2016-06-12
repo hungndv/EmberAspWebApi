@@ -1,30 +1,55 @@
-<!--<button class="btn btn-primary" type="button" {{action 'openNewModal' 'add-student' on='click'}}>Add</button>-->
-{{#link-to "student.add" class="btn btn-primary"}}Add{{/link-to}}
-<br />
-<br />
-<table class="table table-bordered table-hover table-striped">
-    <thead>
-        <tr>
-            <td class="">FirstName</td>
-            <td class="">LastName</td>
-            <td class="">Actions</td>
-        </tr>
-    </thead>
-    {{#unless model.length}}
-        <tr>
-            <td class="" colspan="20">No data found.</td>
-        </tr>
-    {{/unless}}
-    {{#each model as |student|}}
-        <tr>
-            <td class="">{{student.firstName}}</td>
-            <td class="">{{student.lastName}}</td>
-            <td class="">
-                {{#link-to "student.edit" student class="btn btn-default"}}Edit{{/link-to}}
-                {{#link-to "student.delete" student class="btn btn-danger"}}Delete{{/link-to}}
-            </td>
-        </tr>
-    {{/each}}
-</table>
+<div class="row">
+    <div class="col-md-4">
+        {{input type="text" class="form-control" placeholder="Search" value=searchString key-up=(action 'handleFilterEntry')}}
+    </div>
+    <div class="col-md-2">
+        <div class="radio">
+            <label>                
+                {{radio-button value='byFirstName' checked=selection}}
+                By FirstName
+            </label>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="radio">
+            <label>                
+                {{radio-button value='byLastName' checked=selection}}
+                By LastName
+            </label>
+        </div>
+    </div>
+    <div class="col-md-4">
+        {{#link-to "student.add" class="btn btn-primary"}}Add{{/link-to}}
+    </div>
+</div>
+<div class="row"><div class="col-md-12">&nbsp;</div></div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <td class="">FirstName</td>
+                    <td class="">LastName</td>
+                    <td class="">Actions</td>
+                </tr>
+            </thead>
+            {{#unless model.length}}
+            <tr>
+                <td class="" colspan="20">No data found.</td>
+            </tr>
+            {{/unless}}
+            {{#each model as |student|}}
+            <tr>
+                <td class="">{{student.firstName}}</td>
+                <td class="">{{student.lastName}}</td>
+                <td class="">
+                    {{#link-to "student.edit" student class="btn btn-default"}}Edit{{/link-to}}
+                    {{#link-to "student.delete" student class="btn btn-danger"}}Delete{{/link-to}}
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
 
 {{outlet}}

@@ -5,7 +5,6 @@ export default Ember.Controller.extend({
         this.set('selection', 'byFirstName');
     },
     selectedNumberChanged: Ember.observer('selection', function(){
-        alert(this.get('selection'));
         this.send('handleFilterEntry');
     }),
     actions: {
